@@ -1,6 +1,7 @@
 class Shape {
     area() {
         return 0;
+        
     }
   
     perimeter() {
@@ -10,7 +11,13 @@ class Shape {
     toString() {
         return Object.getPrototypeOf(this).constructor.name;
     }
+
+    imprimir() {
+        return `La figura es ${this.toString()}, su area es de ${this.area()}, y su perímetro es ${this.perimeter()}`; 
+    
+    }
 }
+
   
 class Circle extends Shape {
     constructor(r) {
@@ -21,6 +28,8 @@ class Circle extends Shape {
     area() {
         return Math.PI * this.radius ** 2;
     }
+
+   
 }
   
 class Rectangle extends Shape {
@@ -55,9 +64,52 @@ class Triangle extends Shape {
     area() {
         return this.base * this.height / 2;
     }
+
+    perimeter(){
+        return this.base + this.height;
+    }
 }
 
-export {Circle, Rectangle, Square, Triangle};
+class Triangle2 extends Triangle {
+    constructor (a,b,c,h){
+        super();
+        this.ladoA = a;
+        this.ladoB = b;
+        this.ladoC = c;
+        this.height = h;
+    }
 
+    area(){
+        return this.ladoA * this.height / 2;
+    }
+    
+    perimeter(){
+        return this.ladoA + this.ladoB + this.ladoC;
+    }
+}
 
+class Rombo extends Shape {
+    constructor(D,d,l) {
+        super();
+        this.D = D;
+        this.d = d;
+        this.lado = l;
+    }
 
+    area(){
+        return this.D * this.d / 2;
+    }
+
+    perimeter(){
+        return this.lado * 4;
+    }
+}
+
+class Paralelogramo extends Rectangle {
+    constructor(w,h) {
+        super(w,h);
+    }
+
+}
+
+export {Circle, Rectangle, Square, Triangle, Triangle2, Rombo, Paralelogramo};
